@@ -1,0 +1,16 @@
+---
+const {node} = Astro.props;
+---
+
+<span>
+    {node.children[0].text}
+</span>
+
+
+<style>
+    span {
+        background-color: lightgreen;
+        padding: 2px 1px;
+        color: black
+    }
+</style>

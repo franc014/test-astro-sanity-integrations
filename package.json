@@ -1,0 +1,17 @@
+{
+  "name": "sanity-integrations",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@narration-sd/sanity-astro": "^0.2.2",
+    "astro": "^4.0.8",
+    "astro-portabletext": "^0.9.6"
+  }
+}
