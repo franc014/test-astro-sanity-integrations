@@ -1,0 +1,36 @@
+---
+import imageUrlBuilder from "@sanity/image-url";
+import { sanityClient } from "sanity:client";
+
+const builder = imageUrlBuilder(sanityClient)
+
+const {node} = Astro.props
+const {width = 960 } = Astro.props
+const {caption} = Astro.props
+
+const image = node && builder
+  .image(node)
+  .width(width)
+  .fit('fill')
+  .auto('format')
+  //transformations
+  //.blur(80)
+---
+
+<div class="grid">
+    <div>
+        <p>{caption}</p>
+    </div>
+    {image && <img src={image.url()} alt={node.alt || ""} title={node.alt} />}
+
+</div>
+
+<style>
+    .grid {
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+   
+</style>

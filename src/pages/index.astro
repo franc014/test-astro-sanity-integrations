@@ -3,24 +3,21 @@ import { PortableText } from "astro-portabletext";
 import HighlightComponent from "../components/HighlightComponent.astro";
 import SectionHeader from '../components/SectionHeader.astro';
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import SanityImage from '../components/SanityImage.astro';
 
 import { sanityClient } from "sanity:client";
 
 const [company] = await sanityClient.fetch(`*[_type == "company"] `);
+//just the first
+const [founder] = await sanityClient.fetch(`*[_type == "founder"] `);
 
+console.log(founder);
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
-		
 		<h1>Welcome to <span class="text-gradient">{company.name}</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-
-		<PortableText value={company.test_portable_block} components={{
+		<PortableText value={company.testPortableBlock} components={{
 			mark: {
 				highlight: HighlightComponent
 			},
@@ -28,28 +25,7 @@ const [company] = await sanityClient.fetch(`*[_type == "company"] `);
 				sectionHeader: SectionHeader
 			}
 		}}/>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+		<SanityImage node={founder.photo} width="200" caption={founder.photo.Caption}/>
 	</main>
 </Layout>
 
