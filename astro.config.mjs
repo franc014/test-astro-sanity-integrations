@@ -6,10 +6,10 @@ export default defineConfig({
     integrations: [
        
         sanityIntegration({
-        projectId: "flj8u7bp",
+        projectId: "3dp27zit",
         dataset: "production",
         // Set useCdn to false if you're building statically.
-        useCdn: true,
+        useCdn: false,
         }),
 
     ]

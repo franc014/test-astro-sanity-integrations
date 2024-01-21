@@ -1,0 +1,25 @@
+---
+import { PortableText } from "astro-portabletext";
+import CTAComponent from './CTAComponent.astro';
+const {node} = Astro.props;
+---
+
+<main>
+    <PortableText value={node.blockComponents} components={{
+			/* mark: {
+				highlight: HighlightComponent
+			}, */
+			type: {
+				"ctaComponent": CTAComponent
+			}
+		}}/>
+</main>
+
+<style>
+    main {
+        max-width: 80%;
+        margin-inline: auto;
+        background-color: lightgreen;
+        padding-block: 4rem;
+    }
+</style>
